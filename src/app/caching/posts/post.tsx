@@ -1,12 +1,5 @@
-import Detail from "./detail";
-
-export async function getPost(id: string) {
-  const resp = await fetch(`http://localhost:3000/post/${id}`, {
-    next: { revalidate: 5 },
-  }); // data cache
-
-  return resp.json();
-}
+import Detail from './detail';
+import { getPost } from '@/app/lib/fetcher';
 
 export default async function Post({ id }: { id: string }) {
   const post = await getPost(id);
